@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Clash</title>
+    <link href="assets/img/logo.png" rel="shortcut icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <style>
+        /* Styling for pop-up */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 80%;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Pop-up for Level Selection -->
+    <div id="levelPopup" class="popup-container">
+        <div class="popup-content"  style="background-color: black;">
+            <span class="popup-close" onclick="closePopup('levelPopup')">&times;</span>
+            <h3 style="margin: 20px;color: #fff;">Select Game Level</h3>
+            <button class="site-btn" onclick="playEasy()">Easy</button>
+            <span style="margin-right: 20px;"></span>
+            <button class="site-btn" onclick="playMedium()">Medium</button>
+            <span style="margin-right: 20px;"></span>
+            <button class="site-btn" onclick="playHard()">Hard</button>
+        </div>
+    </div>
+
+    <section class="hero-section overflow-hidden">
+        <div class="hero-slider owl-carousel">
+            <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="assets/img/6.jpg">
+                <div class="container">
+                    <h2>Game Cyber Clash</h2>
+                    <button class="site-btn" onclick="openPopup('levelPopup')">Play</button>
+                    <span style="margin-right: 20px;"></span>
+                    <button class="site-btn" onclick="openPopup('learnPopup')">Learn</button>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pop-up for Learn -->
+    <div id="learnPopup" class="popup-container">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup('learnPopup')">&times;</span>
+            <h3>Learn About Game CyberClash</h3>
+            <p>Welcome to CyberClash, a game designed to increase your awareness about online security and phishing attacks.</p>
+            
+            <h4>Game Objective</h4>
+            <p>Protect yourself from cyber threats by defeating the hacker in a card battle. Your goal is to reduce the hacker's life points to zero before your own life points run out.</p>
+            
+            <h4>How to Play</h4>
+            <ul>
+                <li>Select a card from your deck to play against the hacker.</li>
+                <li>Compare the power of your card with the hacker's card:</li>
+                <ul>
+                    <li>If your card's power is higher, the hacker loses life points.</li>
+                    <li>If the hacker's card has higher power, you lose life points.</li>
+                    <li>If powers are equal, it's a tie.</li>
+                </ul>
+                <li>Repeat the process until either you or the hacker runs out of life points.</li>
+            </ul>
+            
+            <h4>Difficulty Levels</h4>
+            <p>Cyber Clash offers different difficulty settings:</p>
+            <ul>
+                <li><strong>Easy:</strong> No time restriction. Take your time to choose cards.</li>
+                <li><strong>Medium:</strong> 10-second time limit per turn. Quick thinking required!</li>
+                <li><strong>Hard:</strong> 5-second time limit per turn. Test your reflexes and decision-making under pressure!</li>
+            </ul>
+            
+            <p>Ready to protect yourself from cyber threats? Start playing Cyber Clash now!</p>
+        </div>
+    </div>
+    <div id="highScoresPopup" class="popup-container">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup('highScoresPopup')">&times;</span>
+            <h3>High Scores</h3>
+            <ul id="easyHighScoresList"></ul>
+            <ul id="mediumHighScoresList"></ul>
+            <ul id="hardHighScoresList"></ul>
+        </div>
+    </div>
+    
+   
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="assets/img/logo.png" alt="">
+            </div>
+            <div class="copyright"><a href="">Cyber Clash</a> ©️ All rights reserved</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.sticky-sidebar.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Preload the sound file
+        var clickSound = new Audio('internet-security/click.mp3');
+
+        // Play sound on button click and pop-up close
+        function playClickSound() {
+            clickSound.play();
+        }
+
+        function openPopup(popupId) {
+            playClickSound();
+            var popup = document.getElementById(popupId);
+            popup.style.display = "block";
+        }
+
+        function closePopup(popupId) {
+            playClickSound();
+            var popup = document.getElementById(popupId);
+            popup.style.display = "none";
+        }
+
+        function playEasy() {
+            playClickSound();
+            setTimeout(() => {
+                location.href = "internet-security/easy.html";
+            }, 200); // Delay to allow the sound to play
+        }
+
+        function playMedium() {
+            playClickSound();
+            setTimeout(() => {
+                location.href = "internet-security/medium.html";
+            }, 200); // Delay to allow the sound to play
+        }
+
+        function playHard() {
+            playClickSound();
+            setTimeout(() => {
+                location.href = "internet-security/hard.html";
+            }, 200); // Delay to allow the sound to play
+        }
+
+        function showScores() {
+            playClickSound();
+            alert("Scores feature coming soon!"); // Placeholder for future implementation
+        }
+
+        // Add click event listener to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', playClickSound);
+        });
+
+        // Add click event listener to popup close buttons
+        document.querySelectorAll('.popup-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', playClickSound);
+        });
+    </script>
+</body>
+</html>
