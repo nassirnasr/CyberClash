@@ -1,5 +1,4 @@
 ---
-
 # CyberClash
 
 CyberClash is an educational card game where players battle against a hacker. The game challenges players to select cards with higher power values than the hacker's cards to win. The game includes different difficulty levels with varying time constraints.
@@ -31,6 +30,10 @@ CyberClash is an educational card game where players battle against a hacker. Th
 - **Original Project (Modified)**: [Project Cyber Guard GitHub](https://github.com/GDGouravDey/Project-Cyber-Guard)
 
 The original project provided the foundation for the Easy mode of the game. The CyberClash project builds upon this by adding additional difficulty levels, automatic turn progression, and time challenges.
+
+## Play the Game
+
+You can play the game live [here](https://nassirnasr.github.io/CyberClash).
 
 ## Contributions
 
